@@ -1,0 +1,63 @@
+class queue
+{
+    static class Node
+    {
+        int data;
+        Node next;
+        
+    }
+    Node front;
+    Node rear;
+   public int length=0;
+   boolean isempty()
+   {
+       return length==0;
+   }
+   void enqueue(int data)
+   {
+       Node node=new Node();
+       node.data=data;
+       if(isempty())
+       {
+           front=node;
+       }
+       else
+       {
+           rear.next=node;
+       }
+       rear=node;
+       length++;
+   }
+   int dequeue()
+   {
+       int res=front.data;
+       front=front.next;
+       if(front==null)
+       {
+           rear=null;
+       }
+       length--;
+       return res;
+   }
+   void show()
+   {
+       Node n=front;
+       while(n!=null)
+       {
+           System.out.print(n.data+"->");
+           n=n.next;
+       }
+       System.out.println();
+   }
+   public static void main(String args[])
+   {
+       queue q=new queue();
+       q.enqueue(1);
+       q.enqueue(2);
+       q.enqueue(3);
+       q.show();
+      System.out.println(q.dequeue());
+      q.show();
+       
+   }
+}

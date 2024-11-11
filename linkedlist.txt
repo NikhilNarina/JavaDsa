@@ -1,0 +1,133 @@
+
+public class LL
+{
+    int size;
+    LL()
+    {
+        this.size=0;
+    }
+    static class Node
+    {
+        int data;
+        Node next;
+        
+    }
+    
+    Node head;
+    
+    public void insertfirst(int data)
+    {
+        Node node=new Node();
+        node.data=data;
+        if(head==null)
+        {
+            head=node;
+        }
+        node.next=head;
+        head=node;
+        size++;
+        
+    }
+    public void insert(int data)
+    {
+        
+        Node node=new Node();
+        node.data=data;
+        if(head==null)
+        {
+            head=node;
+        }
+        else
+        {
+            Node n=head;
+            while(n.next!=null)
+            {
+                n=n.next;
+            }
+            n.next=node;
+            
+        }
+        size++;
+    }
+    
+    public void deletef()
+    {
+        head=head.next;
+        size--;
+    }
+    public void show()
+    {
+        Node n=head;
+        while(n!=null)
+        {
+            System.out.print(n.data+"->");
+            n=n.next;
+        }
+        System.out.print("Null");
+        System.out.println();
+        
+    }
+    public void reverse()
+    {
+        Node prev=head;
+        Node curr=head.next;
+        while(curr!=null)
+        {
+            Node nextnode=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=nextnode;
+        }
+        head.next=null;
+        head=prev;
+    }
+    public void deletel()
+    {
+        Node sl=head;
+        Node l=head.next;
+        while(l.next!=null)
+        {
+            l=l.next;
+            sl=sl.next;
+        }
+        sl.next=null;
+        size--;
+    }
+   public int sizec()
+   {
+       return size;
+   }
+   public void insertat(int data,int index)
+    {
+        Node node=new Node();
+        node.data=data;
+        Node n=head;
+        node.next=null;
+        for(int i=1;i<index-1;i++)
+        {
+            n=n.next;
+        }
+        node.next=n.next;
+        n.next=node;
+        size++;
+    }
+
+    public static void main(String args[])
+    {
+        LL obj=new LL();
+        obj.insert(1);
+        obj.insert(2);
+        obj.insert(3);
+        obj.insertfirst(0);
+        //obj.reverse();
+        obj.deletef();
+        obj.insertat(5,3);
+      
+      
+        
+        obj.show();
+        System.out.println(obj.sizec());
+        
+        
+    }
+}

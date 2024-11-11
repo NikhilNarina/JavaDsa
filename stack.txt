@@ -1,0 +1,51 @@
+class stack
+{
+    static class Node
+    {
+        int data;
+        Node next;
+       
+    }
+    public int length=0;
+    Node top;
+    void push(int data)
+    {
+        Node node=new Node();
+        node.data=data;
+        node.next=top;
+        top=node;
+        length++;
+    }
+    int pop()
+    {
+        int res=top.data;
+        top=top.next;
+        length--;
+        return res;
+    }
+    int len()
+    {
+        return length;
+    }
+    void show()
+    {
+        Node n=top;
+        while(n!=null)
+        {
+            System.out.print("|"+n.data+"|");
+            n=n.next;
+        }
+        System.out.println();
+    }
+    public static void main(String args[])
+    {
+        stack s=new stack();
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        s.show();
+        System.out.println(s.pop());
+        s.show();
+        System.out.println(s.len());
+    }
+}
